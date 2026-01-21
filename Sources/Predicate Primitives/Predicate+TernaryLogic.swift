@@ -1,7 +1,7 @@
 // Predicate+TernaryLogic.swift
 // Three-valued logic lifting for predicates.
 
-public import Ternary_Logic_Primitives
+public import Logic_Ternary_Primitives
 
 // MARK: - Three-Valued Evaluation
 
@@ -11,7 +11,7 @@ extension Predicate {
     /// Returns `.unknown` for `nil` input, following Strong Kleene semantics.
     /// This enables composable three-valued logic with optional values.
     @inlinable
-    public static func callAsFunction<L: TernaryLogic.`Protocol`>(
+    public static func callAsFunction<L: Logic.Ternary.`Protocol`>(
         _ predicate: Predicate,
         _ value: T?
     ) -> L {
@@ -39,7 +39,7 @@ extension Predicate {
     /// isEven(y) || isEven(x)  // nil || true = true
     /// ```
     @inlinable
-    public func callAsFunction<L: TernaryLogic.`Protocol`>(_ value: T?) -> L {
+    public func callAsFunction<L: Logic.Ternary.`Protocol`>(_ value: T?) -> L {
         Self.callAsFunction(self, value)
     }
 }
