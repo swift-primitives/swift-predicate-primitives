@@ -1,7 +1,7 @@
 // Predicate+TernaryLogic Tests.swift
 // Tests for three-valued logic lifting with optional values.
 
-import Ternary_Logic_Primitives
+import Logic_Ternary_Primitives
 import Testing
 
 @testable import Predicate_Primitives
