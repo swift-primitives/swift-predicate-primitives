@@ -1,6 +1,8 @@
 // Predicate.swift
 // A composable boolean test on values of type T.
 
+public import Witness_Primitives
+
 /// A composable boolean test that determines whether values of type `T` satisfy a condition.
 ///
 /// Predicates wrap evaluation closures and provide fluent APIs for building complex boolean logic.
@@ -24,7 +26,7 @@
 /// let inRange = Predicate<Int>.in.range(1...10)
 /// let hasPrefix = Predicate<String>.has.prefix("foo")
 /// ```
-public struct Predicate<T>: @unchecked Sendable {
+public struct Predicate<T>: @unchecked Sendable, Witness.`Protocol` {
     /// Closure that evaluates whether a value satisfies the condition.
     public var evaluate: (T) -> Bool
 
