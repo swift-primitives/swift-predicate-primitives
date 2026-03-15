@@ -1,4 +1,4 @@
-// Predicate+(T) -> Bool.swift
+// Predicate+Closure.swift
 // Convenience operators for raw (T) -> Bool closures.
 
 // MARK: - (T) -> Bool Operators
