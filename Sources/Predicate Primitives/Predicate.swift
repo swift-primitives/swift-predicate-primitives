@@ -352,8 +352,7 @@ extension Predicate {
 
     /// Adapts a predicate to test a property via key path.
     @inlinable
-    public static func pullback<U>(_ predicate: Predicate, _ keyPath: KeyPath<U, T>) -> Predicate<U>
-    {
+    public static func pullback<U>(_ predicate: Predicate, _ keyPath: KeyPath<U, T>) -> Predicate<U> {
         Self.pullback(predicate) { $0[keyPath: keyPath] }
     }
 
@@ -399,8 +398,7 @@ extension Predicate {
     /// let isAdult = Predicate<Person>.where(\.age, .greater.thanOrEqualTo(18))
     /// ```
     @inlinable
-    public static func `where`<V>(_ keyPath: KeyPath<T, V>, _ predicate: Predicate<V>) -> Predicate
-    {
+    public static func `where`<V>(_ keyPath: KeyPath<T, V>, _ predicate: Predicate<V>) -> Predicate {
         predicate.pullback(keyPath)
     }
 
@@ -427,8 +425,7 @@ extension Predicate {
     ///
     /// Returns the default for `nil`, otherwise evaluates the wrapped value.
     @inlinable
-    public static func optional(_ predicate: Predicate, default defaultValue: Bool) -> Predicate<T?>
-    {
+    public static func optional(_ predicate: Predicate, default defaultValue: Bool) -> Predicate<T?> {
         Predicate<T?> { value in
             guard let value else { return defaultValue }
             return predicate.evaluate(value)
