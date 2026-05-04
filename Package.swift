@@ -15,7 +15,11 @@ let package = Package(
         .library(
             name: "Predicate Primitives",
             targets: ["Predicate Primitives"]
-        )
+        ),
+        .library(
+            name: "Predicate Primitives Test Support",
+            targets: ["Predicate Primitives Test Support"]
+        ),
     ],
     dependencies: [
         .package(path: "../swift-logic-primitives"),
@@ -29,11 +33,20 @@ let package = Package(
                 .product(name: "Witness Primitives", package: "swift-witness-primitives"),
             ]
         ),
+        .target(
+            name: "Predicate Primitives Test Support",
+            dependencies: [
+                "Predicate Primitives",
+                .product(name: "Logic Primitives Test Support", package: "swift-logic-primitives"),
+            ],
+            path: "Tests/Support"
+        ),
         .testTarget(
             name: "Predicate Primitives Tests",
             dependencies: [
                 "Predicate Primitives",
                 .product(name: "Logic Ternary Primitives", package: "swift-logic-primitives"),
+                "Predicate Primitives Test Support",
             ]
         ),
     ],
