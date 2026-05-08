@@ -1,8 +1,6 @@
 // Predicate.swift
 // A composable boolean test on values of type T.
 
-public import Witness_Primitives
-
 /// A composable boolean test that determines whether values of type `T` satisfy a condition.
 ///
 /// Predicates wrap evaluation closures and provide fluent APIs for building complex boolean logic.
@@ -32,7 +30,7 @@ public import Witness_Primitives
 // WHY: fixed by making the closure `@Sendable` in the stored property type.
 // WHEN TO REMOVE: When closure is changed to @Sendable or compiler infers it.
 // TRACKING: unsafe-audit-findings.md Category D SP-4.
-public struct Predicate<T>: @unchecked Sendable, Witness.`Protocol` {
+public struct Predicate<T>: @unchecked Sendable {
     /// Closure that evaluates whether a value satisfies the condition.
     public var evaluate: (T) -> Bool
 

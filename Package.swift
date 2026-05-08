@@ -23,14 +23,12 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../swift-logic-primitives"),
-        .package(path: "../swift-witness-primitives"),
     ],
     targets: [
         .target(
             name: "Predicate Primitives",
             dependencies: [
                 .product(name: "Logic Ternary Primitives", package: "swift-logic-primitives"),
-                .product(name: "Witness Primitives", package: "swift-witness-primitives"),
             ]
         ),
         .target(
