@@ -22,7 +22,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-logic-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-logic-primitives.git", branch: "main"),
     ],
     targets: [
         .target(
