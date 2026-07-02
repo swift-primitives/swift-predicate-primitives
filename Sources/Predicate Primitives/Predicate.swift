@@ -1,6 +1,13 @@
 // Predicate.swift
 // A composable boolean test on values of type T.
 
+// WHY: Category D — structural Sendable workaround (SP-4).
+// WHY: Holds `var evaluate: (T) -> Bool` — a non-@Sendable closure. @unchecked
+// WHY: exists because the closure storage blocks structural inference. Could be
+// WHY: fixed by making the closure `@Sendable` in the stored property type.
+// WHEN TO REMOVE: When closure is changed to @Sendable or compiler infers it.
+// TRACKING: unsafe-audit-findings.md Category D SP-4.
+
 /// A composable boolean test that determines whether values of type `T` satisfy a condition.
 ///
 /// Predicates wrap evaluation closures and provide fluent APIs for building complex boolean logic.
@@ -24,12 +31,6 @@
 /// let inRange = Predicate<Int>.in.range(1...10)
 /// let hasPrefix = Predicate<String>.has.prefix("foo")
 /// ```
-// WHY: Category D — structural Sendable workaround (SP-4).
-// WHY: Holds `var evaluate: (T) -> Bool` — a non-@Sendable closure. @unchecked
-// WHY: exists because the closure storage blocks structural inference. Could be
-// WHY: fixed by making the closure `@Sendable` in the stored property type.
-// WHEN TO REMOVE: When closure is changed to @Sendable or compiler infers it.
-// TRACKING: unsafe-audit-findings.md Category D SP-4.
 public struct Predicate<T>: @unchecked Sendable {
     /// Closure that evaluates whether a value satisfies the condition.
     public var evaluate: (T) -> Bool
