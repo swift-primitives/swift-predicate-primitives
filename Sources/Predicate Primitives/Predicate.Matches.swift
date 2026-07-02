@@ -14,6 +14,7 @@ extension Predicate.Matches where T: StringProtocol {
     @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     @inlinable
     public static func regex(_ regex: Regex<Substring>) -> Predicate<T> {
+        // swiftlint:disable:next no_try_optional - reason: a regex evaluation error means no-match; the predicate's Bool verdict is the entire signal, so nil-on-error is the intended semantics ([IMPL-108] escape hatch)
         Predicate { (try? regex.wholeMatch(in: String($0))) != nil }
     }
 }
