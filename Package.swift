@@ -19,7 +19,6 @@ let package = Package(
         .trait(name: "Contramap", description: "Borrowed input adaptation"),
         .trait(name: "Always", description: "Constant predicates"),
         .trait(name: "Optic", description: "Borrowed focus evaluation"),
-        .default(enabledTraits: ["Contramap", "Always", "Optic", "Logic"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-logic.git", branch: "main"),
