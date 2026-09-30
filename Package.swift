@@ -30,10 +30,10 @@ let package = Package(
         .target(
             name: "Predicate",
             dependencies: [
-                .product(name: "Logic", package: "swift-logic", condition: .when(traits: ["Logic"])),
-                .product(name: "Contramap", package: "swift-contramap", condition: .when(traits: ["Contramap"])),
-                .product(name: "Always", package: "swift-always", condition: .when(traits: ["Always"])),
-                .product(name: "Optic", package: "swift-optic", condition: .when(traits: ["Optic"])),
+                .product(name: "Logic", package: "swift-logic"),
+                .product(name: "Contramap", package: "swift-contramap"),
+                .product(name: "Always", package: "swift-always"),
+                .product(name: "Optic", package: "swift-optic"),
             ]
         ),
         .testTarget(
